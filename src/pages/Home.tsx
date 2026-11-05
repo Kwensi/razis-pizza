@@ -59,30 +59,34 @@ export default function Home() {
     <>
       {/* Hero, styled after the printed flyers */}
       <section className="bg-grunge relative overflow-hidden text-white">
-        <div className="container-page grid items-center gap-8 pb-12 pt-8 md:grid-cols-[1.05fr_1fr] md:py-16">
-          <div>
-            <p className={`mb-5 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold ${status.open ? 'bg-[#1d8a4b]' : 'bg-white/15'}`}>
+        {/* On phones the photo comes first so it is visible without scrolling (iPhone Safari leaves ~590px). */}
+        <div className="container-page grid items-center gap-5 pb-10 pt-5 md:grid-cols-[1.05fr_1fr] md:gap-8 md:py-16">
+          <div className="relative md:order-last">
+            <div className="brush absolute inset-[6%] -rotate-3 bg-brand" aria-hidden />
+            <ProductImage image="images/razis-supreme" alt="Razi's Supreme pizza with a stretchy cheese pull" eager
+              sizes="(min-width: 768px) 50vw, 100vw" className="relative aspect-[16/10] w-full rounded-[24px] shadow-2xl shadow-black/50 md:aspect-[4/3] md:rounded-[28px]" />
+            <p className={`absolute left-3 top-3 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold shadow md:hidden ${status.open ? 'bg-[#1d8a4b]' : 'bg-night/85'}`}>
+              <span className={`h-2 w-2 rounded-full ${status.open ? 'bg-white' : 'bg-gold'}`} />{status.label}
+            </p>
+          </div>
+          <div className="flex flex-col items-start">
+            <p className={`mb-5 hidden w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold md:inline-flex ${status.open ? 'bg-[#1d8a4b]' : 'bg-white/15'}`}>
               <span className={`h-2 w-2 rounded-full ${status.open ? 'bg-white' : 'bg-gold'}`} />{status.label}
             </p>
             <h1 className="leading-[0.86]">
-              <span className="block text-5xl text-gold sm:text-6xl">{brand.heroKicker}</span>
-              <span className="block text-[6.5rem] text-white drop-shadow-[0_4px_0_rgba(0,0,0,0.35)] sm:text-[9rem]">{brand.heroTitle}</span>
+              <span className="block text-4xl text-gold sm:text-6xl">{brand.heroKicker}</span>
+              <span className="block text-[5.25rem] text-white drop-shadow-[0_4px_0_rgba(0,0,0,0.35)] sm:text-[9rem]">{brand.heroTitle}</span>
             </h1>
-            <p className="brush mt-3 inline-block -rotate-1 bg-gold px-5 py-2 font-display text-lg uppercase tracking-wide text-ink sm:text-2xl">
+            <p className="brush mt-2 inline-block -rotate-1 bg-gold px-4 py-1.5 font-display text-base uppercase tracking-wide text-ink sm:mt-3 sm:px-5 sm:py-2 sm:text-2xl">
               {brand.heroStrap}
             </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-white/85 sm:text-lg">{s.description}</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link to="/menu" className="btn-primary px-7 py-4 font-display text-xl uppercase tracking-wide"><ShoppingBag size={20} /> Order now</Link>
-              <a href={whatsAppContactUrl(s)} target="_blank" rel="noopener noreferrer" className="btn border border-white/25 bg-white/5 px-6 py-4 text-white hover:bg-white/15">
-                <MessageCircle size={20} /> WhatsApp us
+            <div className="order-last mt-5 flex w-full gap-2.5 sm:w-auto sm:gap-3 md:order-2 md:mt-7">
+              <Link to="/menu" className="btn-primary flex-1 px-5 py-3.5 font-display text-lg uppercase tracking-wide sm:flex-none sm:px-7 sm:py-4 sm:text-xl"><ShoppingBag size={20} /> Order now</Link>
+              <a href={whatsAppContactUrl(s)} target="_blank" rel="noopener noreferrer" className="btn flex-1 border border-white/25 bg-white/5 px-4 py-3.5 text-white hover:bg-white/15 sm:flex-none sm:px-6 sm:py-4">
+                <MessageCircle size={20} /> WhatsApp
               </a>
             </div>
-          </div>
-          <div className="relative">
-            <div className="brush absolute inset-[6%] -rotate-3 bg-brand" aria-hidden />
-            <ProductImage image="images/razis-supreme" alt="Razi's Supreme pizza with a stretchy cheese pull" eager
-              sizes="(min-width: 768px) 50vw, 100vw" className="relative aspect-[4/3] w-full rounded-[28px] shadow-2xl shadow-black/50" />
+            <p className="order-last mt-5 max-w-md text-base leading-relaxed text-white/85 sm:text-lg md:order-1 md:mt-6">{s.description}</p>
           </div>
         </div>
       </section>
