@@ -80,7 +80,7 @@ export function ProductCard({ product, onSelect, priority = false }: { product: 
       </button>
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-xl font-semibold leading-tight">{product.name}</h3>
+          <h3 className="text-xl font-extrabold leading-tight">{product.name}</h3>
           <p className="shrink-0 text-right text-sm text-ink-soft">
             {(customizable || (product.kind === 'simple' && product.variants.length > 1)) && 'From '}
             <span className="text-base font-bold text-ink">{money(startingPrice(catalog, product))}</span>
@@ -106,7 +106,7 @@ export function SectionHeading({ eyebrow, title, children }: { eyebrow: string; 
   return (
     <div className="mb-8 max-w-2xl">
       <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">{title}</h2>
+      <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">{title}</h2>
       {children && <p className="mt-3 text-ink-soft">{children}</p>}
     </div>
   )

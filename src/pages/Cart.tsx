@@ -114,7 +114,7 @@ export default function Cart() {
     return (
       <div className="container-page flex flex-col items-center py-24 text-center">
         <span className="grid h-20 w-20 place-items-center rounded-full bg-cream-deep"><ShoppingBag size={34} className="text-brand" /></span>
-        <h1 className="mt-6 text-3xl font-semibold">Your cart is empty</h1>
+        <h1 className="mt-6 text-3xl font-extrabold">Your cart is empty</h1>
         <p className="mt-2 max-w-sm text-ink-soft">Pick a pizza, make it yours, and it’ll show up here.</p>
         <Link to="/menu" className="btn-primary mt-8">Browse the menu</Link>
       </div>
@@ -125,7 +125,7 @@ export default function Cart() {
   return (
     <div className="container-page grid gap-8 py-8 lg:grid-cols-[1fr_380px]">
       <section aria-labelledby="cart-title">
-        <h1 id="cart-title" className="text-4xl font-semibold">Your cart</h1>
+        <h1 id="cart-title" className="text-4xl font-extrabold">Your cart</h1>
         <ul className="mt-6 space-y-4">
           {totals.priced.map((p) => (
             <li key={p.line.lineId} className="card flex gap-4 p-4">
@@ -163,7 +163,7 @@ export default function Cart() {
 
       <aside className="lg:sticky lg:top-24 lg:self-start">
         <div className="card space-y-5 p-6">
-          <h2 className="text-2xl font-semibold">Order summary</h2>
+          <h2 className="text-2xl font-extrabold">Order summary</h2>
           <OrderTypeToggle />
           {draft.orderType === 'delivery' && <ZoneSelect />}
           <PromoCodeInput totals={totals} />

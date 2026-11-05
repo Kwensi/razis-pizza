@@ -61,7 +61,7 @@ function ProductEditor({ initial, onClose }: { initial: Product; onClose: () => 
 
   return (
     <div className="card space-y-4 p-5">
-      <h2 className="text-xl font-semibold">{isNew ? 'Add product' : `Edit ${initial.name}`}</h2>
+      <h2 className="text-xl font-extrabold">{isNew ? 'Add product' : `Edit ${initial.name}`}</h2>
       <div className="grid gap-4 sm:grid-cols-[200px_1fr]">
         <div>
           <ProductImage image={p.image} alt="" className="aspect-[4/3] w-full rounded-2xl" />
@@ -216,7 +216,7 @@ function ToppingsAndCrusts() {
   return (
     <div className="space-y-6">
       <section className="card space-y-3 p-5">
-        <h2 className="text-xl font-semibold">Toppings &amp; extra charges</h2>
+        <h2 className="text-xl font-extrabold">Toppings &amp; extra charges</h2>
         <p className="text-sm text-ink-soft">Charge per size when a customer adds the topping. “Extra cheese” prices are used for the Extra (×1) and Double (×2) cheese options.</p>
         {toppings.map((t, i) => (
           <div key={t.id} className="grid items-end gap-2 border-b border-ink/5 pb-3 lg:grid-cols-[1fr_2fr_auto_auto_auto]">
@@ -230,7 +230,7 @@ function ToppingsAndCrusts() {
         <button type="button" className="btn-ghost py-2 text-sm" onClick={() => setToppings([...toppings, { id: `top-${Date.now().toString(36)}`, name: 'New topping', prices: { S: 0, M: 0, L: 0, XL: 0 }, vegetarian: true, enabled: true }])}>+ Add topping</button>
       </section>
       <section className="card space-y-3 p-5">
-        <h2 className="text-xl font-semibold">Crusts</h2>
+        <h2 className="text-xl font-extrabold">Crusts</h2>
         <p className="text-sm text-ink-soft">Surcharge per size. Leave a size blank to make the crust unavailable in that size.</p>
         {crusts.map((c, i) => (
           <div key={c.id} className="grid items-end gap-2 border-b border-ink/5 pb-3 lg:grid-cols-[1fr_1fr_2fr_auto]">
@@ -259,7 +259,7 @@ export default function MenuAdmin() {
   const tabs = [['products', 'Products'], ['categories', 'Categories'], ['toppings', 'Toppings & crusts']] as const
   return (
     <div className="space-y-5">
-      <h1 className="text-3xl font-semibold">Menu</h1>
+      <h1 className="text-3xl font-extrabold">Menu</h1>
       <DemoModeNotice />
       <div className="flex gap-2" role="tablist">
         {tabs.map(([id, label]) => (

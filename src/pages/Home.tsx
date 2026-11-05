@@ -20,7 +20,8 @@ export default function Home() {
   const offers = catalog.promotions.filter((p) => p.featured && isPromotionLive(p, new Date()))
   const collections = catalog.categories.filter((c) => c.enabled && c.kind === 'pizza').sort((a, b) => a.sortOrder - b.sortOrder)
   const cover = (catId: string) => visible.find((p) => p.categoryId === catId)?.image ?? 'images/margherita'
-  const cheapestZone = s.deliveryZones.filter((z) => z.active).sort((a, b) => a.fee - b.fee)[0]
+  const taglineParts = s.tagline.split(/(?<=[.!])\s+/).filter(Boolean)
+  const cheapestZone =s.deliveryZones.filter((z) => z.active).sort((a, b) => a.fee - b.fee)[0]
 
   return (
     <>
@@ -36,8 +37,15 @@ export default function Home() {
           <p className={`mb-5 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold ${status.open ? 'bg-[#1d8a4b]' : 'bg-white/15'}`}>
             <span className={`h-2 w-2 rounded-full ${status.open ? 'bg-white' : 'bg-[#f4c46a]'}`} />{status.label}
           </p>
-          <h1 className="max-w-2xl text-5xl font-semibold leading-[1.02] sm:text-7xl">{s.tagline}</h1>
-          <p className="mt-5 max-w-lg text-lg text-white/85">{s.description}</p>
+          <p className="mb-4 flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.35em] text-[#f4c46a]">
+            <span className="h-px w-10 bg-[#f4c46a]" />{s.name} · {s.city}
+          </p>
+          <h1 className="max-w-3xl text-[3.25rem] font-black uppercase leading-[0.9] tracking-tight sm:text-7xl xl:text-8xl">
+            {taglineParts.map((part, i) => (
+              <span key={i} className={`block ${i === taglineParts.length - 1 && taglineParts.length > 1 ? 'text-[#f4c46a]' : ''}`}>{part}</span>
+            ))}
+          </h1>
+          <p className="mt-6 max-w-lg text-lg text-white/85">{s.description}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/menu" className="btn-primary px-7 py-4 text-lg"><ShoppingBag size={20} /> Order now</Link>
             <a href={whatsAppContactUrl(s)} target="_blank" rel="noopener noreferrer" className="btn border border-white/30 bg-white/10 px-6 py-4 text-white backdrop-blur hover:bg-white/20">
@@ -51,6 +59,15 @@ export default function Home() {
           </dl>
         </div>
       </section>
+
+      {/* Brand band */}
+      <div className="overflow-hidden bg-brand py-4 text-cream" aria-hidden="true">
+        <p className="flex w-max gap-8 whitespace-nowrap px-4 font-display text-2xl font-black uppercase tracking-tight sm:text-3xl">
+          {Array.from({ length: 3 }, () => ['Hand-stretched', 'Stone-baked', 'Real mozzarella', 'Delivered hot']).flat().map((w, i) => (
+            <span key={i} className="flex items-center gap-8">{w}<span className="text-[#f4c46a]">✦</span></span>
+          ))}
+        </p>
+      </div>
 
       {/* Collections */}
       <section className="container-page py-16 sm:py-20" aria-labelledby="collections">
@@ -93,7 +110,7 @@ export default function Home() {
             {offers.map((o, i) => (
               <article key={o.id} className={`relative overflow-hidden rounded-3xl p-7 ${i === 0 ? 'bg-brand text-white' : 'card'}`}>
                 <TagIcon className={i === 0 ? 'text-white/70' : 'text-brand'} />
-                <h3 className="mt-4 text-2xl font-semibold">{o.name}</h3>
+                <h3 className="mt-4 text-2xl font-extrabold">{o.name}</h3>
                 <p className={`mt-2 text-sm leading-relaxed ${i === 0 ? 'text-white/85' : 'text-ink-soft'}`}>{o.description}</p>
                 {o.code
                   ? <p className={`mt-5 inline-block rounded-xl border-2 border-dashed px-3 py-1.5 font-mono text-sm font-bold ${i === 0 ? 'border-white/50' : 'border-brand/40 text-brand'}`}>{o.code}</p>
@@ -109,7 +126,7 @@ export default function Home() {
         <ProductImage image="images/story" alt="A pizza being sliced with fresh tomato and basil" className="aspect-[4/3] w-full rounded-[32px]" />
         <div>
           <p className="eyebrow">Our kitchen</p>
-          <h2 className="mt-2 text-3xl font-semibold sm:text-4xl">Dough proved for 48 hours. Baked in minutes.</h2>
+          <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">Dough proved for 48 hours. Baked in minutes.</h2>
           <p className="mt-4 leading-relaxed text-ink-soft">
             Every base is hand-stretched to order from dough we prove slowly for two days, then baked at over 400°C so it blisters outside and stays tender inside.
             We use real mozzarella, San Marzano-style tomatoes and produce from local farms.
@@ -144,7 +161,7 @@ export default function Home() {
         <div className="grid overflow-hidden rounded-[32px] bg-ink text-white md:grid-cols-2">
           <div className="p-8 sm:p-12">
             <p className="eyebrow text-[#f4c46a]">Visit us</p>
-            <h2 id="visit" className="mt-2 text-3xl font-semibold">Opening hours</h2>
+            <h2 id="visit" className="mt-2 text-3xl font-extrabold">Opening hours</h2>
             <dl className="mt-6 divide-y divide-white/10 text-sm">
               {[1, 2, 3, 4, 5, 6, 0].map((d) => {
                 const h = s.hours.find((x) => x.day === d)

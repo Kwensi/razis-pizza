@@ -33,7 +33,7 @@ export const restaurant: RestaurantSettings = {
   instagram: '',
   facebook: '',
   // Public URL where the app is hosted (used for SEO tags and sitemap).
-  siteUrl: 'https://your-username.github.io/pizza-pwa/',
+  siteUrl: 'https://kwensi.github.io/razis-pizza/',
   currency: { code: 'GHS', symbol: 'GH₵', locale: 'en-GH' },
   // For a US deployment use: { code: 'USD', symbol: '$', locale: 'en-US' }, phoneCountryCode '1', phoneNationalLength 10
   timezone: 'Africa/Accra',

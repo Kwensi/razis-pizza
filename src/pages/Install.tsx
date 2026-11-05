@@ -34,7 +34,7 @@ export default function Install() {
   return (
     <div className="container-page max-w-3xl py-10">
       <p className="eyebrow">Install</p>
-      <h1 className="mt-2 text-4xl font-semibold">Add {catalog.settings.name} to your home screen</h1>
+      <h1 className="mt-2 text-4xl font-extrabold">Add {catalog.settings.name} to your home screen</h1>
       <p className="mt-3 text-ink-soft">Open the menu in one tap, browse offline and order faster. It’s free, takes no storage to speak of, and there’s no app store needed.</p>
 
       {installed ? (
@@ -47,7 +47,7 @@ export default function Install() {
 
       <div className="mt-8 grid gap-5 md:grid-cols-2">
         <section className={`card p-6 ${isIOS ? 'ring-2 ring-brand' : ''}`}>
-          <h2 className="text-xl font-semibold">iPhone &amp; iPad</h2>
+          <h2 className="text-xl font-extrabold">iPhone &amp; iPad</h2>
           <ol className="mt-4 space-y-3">
             <li className={step}><span className={num}>1</span>Open this page in <strong>Safari</strong>.</li>
             <li className={step}><span className={num}>2</span><span>Tap the <strong>Share</strong> button <Share size={15} className="inline" /> at the bottom (or top) of the screen.</span></li>
@@ -56,7 +56,7 @@ export default function Install() {
           </ol>
         </section>
         <section className={`card p-6 ${/Android/.test(ua) ? 'ring-2 ring-brand' : ''}`}>
-          <h2 className="text-xl font-semibold">Android</h2>
+          <h2 className="text-xl font-extrabold">Android</h2>
           <ol className="mt-4 space-y-3">
             <li className={step}><span className={num}>1</span>Open this page in <strong>Chrome</strong>.</li>
             <li className={step}><span className={num}>2</span>Tap <strong>Install app</strong> when prompted, or open the <strong>⋮ menu</strong>.</li>
@@ -64,7 +64,7 @@ export default function Install() {
           </ol>
         </section>
         <section className="card p-6 md:col-span-2">
-          <h2 className="flex items-center gap-2 text-xl font-semibold"><MonitorSmartphone size={20} /> Windows &amp; Mac</h2>
+          <h2 className="flex items-center gap-2 text-xl font-extrabold"><MonitorSmartphone size={20} /> Windows &amp; Mac</h2>
           <p className="mt-3 text-sm leading-relaxed">
             In <strong>Chrome</strong> or <strong>Edge</strong>, click the install icon at the right of the address bar (or menu → <em>Install {catalog.settings.name}</em>).
             On a Mac with <strong>Safari 17+</strong>, choose <em>File → Add to Dock</em>.
@@ -80,7 +80,7 @@ export function NotFound() {
   useDocumentTitle('Page not found')
   return (
     <div className="container-page py-24 text-center">
-      <h1 className="text-4xl font-semibold">We couldn’t find that page</h1>
+      <h1 className="text-4xl font-extrabold">We couldn’t find that page</h1>
       <p className="mt-2 text-ink-soft">It may have moved. Our pizzas haven’t.</p>
       <Link to="/menu" className="btn-primary mt-8">Go to the menu</Link>
     </div>

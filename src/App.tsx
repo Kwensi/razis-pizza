@@ -20,7 +20,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
     if (!this.state.error) return this.props.children
     return (
       <div className="mx-auto max-w-md px-6 py-24 text-center">
-        <h1 className="text-3xl font-semibold">Something went wrong</h1>
+        <h1 className="text-3xl font-extrabold">Something went wrong</h1>
         <p className="mt-3 text-ink-soft">Please reload the page. Your cart is saved on this device.</p>
         <button type="button" className="btn-primary mt-6" onClick={() => location.reload()}>Reload</button>
       </div>

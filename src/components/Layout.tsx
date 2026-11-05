@@ -12,12 +12,32 @@ export const whatsAppContactUrl = (s: RestaurantSettings) => whatsappUrl(s.whats
 export const mapUrl = (s: RestaurantSettings) =>
   s.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${s.name}, ${s.address}, ${s.city}`)}`
 
+/** Splits "Razi's Pizza" into a heavy wordmark ("Razi's") and a spaced caps descriptor ("PIZZA"). */
+export function splitBrand(name: string): { mark: string; descriptor: string } {
+  const words = name.trim().split(/\s+/)
+  return words.length > 1 ? { mark: words.slice(0, -1).join(' '), descriptor: words[words.length - 1] } : { mark: name, descriptor: '' }
+}
+
+export function Wordmark({ light = false, size = 'md' }: { light?: boolean; size?: 'md' | 'xl' }) {
+  const { catalog } = useCatalog()
+  const { mark, descriptor } = splitBrand(catalog.settings.name)
+  const big = size === 'xl'
+  return (
+    <span className="flex flex-col leading-none">
+      <span className={`font-display font-black tracking-tight ${big ? 'text-6xl sm:text-8xl' : 'text-[1.6rem]'} ${light ? 'text-white' : 'text-ink'}`}>{mark}</span>
+      {descriptor && (
+        <span className={`font-sans font-extrabold uppercase ${light ? 'text-[#f4c46a]' : 'text-brand'} ${big ? 'mt-2 text-sm tracking-[0.6em]' : 'mt-0.5 text-[9px] tracking-[0.5em]'}`}>{descriptor}</span>
+      )}
+    </span>
+  )
+}
+
 export function Logo({ light = false }: { light?: boolean }) {
   const { catalog } = useCatalog()
   return (
     <Link to="/" className="flex items-center gap-2.5" aria-label={`${catalog.settings.name} home`}>
-      <img src="logo.svg" alt="" width={36} height={36} className="h-9 w-9" />
-      <span className={`font-display text-xl font-semibold leading-none ${light ? 'text-white' : ''}`}>{catalog.settings.name}</span>
+      <img src="logo.svg" alt="" width={40} height={40} className="h-10 w-10 drop-shadow-sm" />
+      <Wordmark light={light} />
     </Link>
   )
 }
@@ -76,10 +96,10 @@ function Footer() {
   const s = catalog.settings
   return (
     <footer className="no-print mt-20 bg-ink pb-24 text-white/80 md:pb-0">
+      <div className="container-page border-b border-white/10 pb-10 pt-16"><Wordmark light size="xl" /></div>
       <div className="container-page grid gap-10 py-14 sm:grid-cols-3">
         <div>
-          <Logo light />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed">{s.tagline}</p>
+          <p className="max-w-xs font-display text-xl font-bold leading-snug text-white">{s.tagline}</p>
         </div>
         <div className="text-sm">
           <h2 className="mb-3 font-sans text-xs font-bold uppercase tracking-[0.18em] text-white">Visit</h2>

@@ -61,7 +61,7 @@ export function OrdersList() {
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <h1 className="text-3xl font-semibold">Orders</h1>
+        <h1 className="text-3xl font-extrabold">Orders</h1>
         <button type="button" onClick={exportCsv} className="btn-ghost py-2 text-sm"><Download size={16} /> Export CSV</button>
       </div>
       <div className="card grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -186,12 +186,12 @@ export function ImportOrder() {
   useEffect(() => { if (decoded) getOrder(decoded.ref).then(setExisting) }, [decoded])
 
   if (!decoded || !built) {
-    return <div className="card mx-auto max-w-lg p-6"><h1 className="text-2xl font-semibold">Invalid order link</h1><p className="mt-2 text-ink-soft">This link is incomplete or has been altered. Ask the customer to resend the order.</p></div>
+    return <div className="card mx-auto max-w-lg p-6"><h1 className="text-2xl font-extrabold">Invalid order link</h1><p className="mt-2 text-ink-soft">This link is incomplete or has been altered. Ask the customer to resend the order.</p></div>
   }
   const { order, errors } = built
   return (
     <div className="card mx-auto max-w-2xl space-y-4 p-6">
-      <h1 className="text-2xl font-semibold">Add WhatsApp order {order.ref}</h1>
+      <h1 className="text-2xl font-extrabold">Add WhatsApp order {order.ref}</h1>
       <p className="text-sm text-ink-soft">Prices below were recalculated from your current menu, not taken from the customer’s message. Compare the total with the WhatsApp message before accepting.</p>
       {existing && <p className="rounded-xl bg-cream p-3 text-sm">This order is already in your dashboard. <Link className="font-bold text-brand" to={`/admin/orders/${order.ref}`}>Open it</Link></p>}
       {errors.length > 0 && <div role="alert" className="rounded-xl bg-brand-soft p-3 text-sm text-brand-dark"><p className="font-bold">Check this order:</p><ul className="list-disc pl-5">{errors.map((e) => <li key={e}>{e}</li>)}</ul></div>}

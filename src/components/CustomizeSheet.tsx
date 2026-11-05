@@ -71,7 +71,7 @@ function SheetBody({ product, editing, onDone }: { product: Product; editing?: C
       </div>
 
       <div className="relative flex-1 overflow-y-auto overscroll-contain px-5 pb-6 pt-5 sm:px-7">
-        <h2 id="customize-title" className="text-3xl font-semibold">{product.name}</h2>
+        <h2 id="customize-title" className="text-3xl font-extrabold">{product.name}</h2>
         <p className="mt-2 text-ink-soft">{product.description}</p>
         {!!product.tags?.length && <div className="mt-3 flex flex-wrap gap-1.5">{product.tags.map((t) => <Tag key={t} label={t} />)}</div>}
 

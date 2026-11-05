@@ -23,7 +23,7 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
   return <label className="flex items-center gap-2 text-sm font-semibold"><input type="checkbox" className="h-5 w-5 accent-[var(--color-brand)]" checked={checked} onChange={(e) => onChange(e.target.checked)} />{label}</label>
 }
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return <section className="card space-y-4 p-5"><h2 className="text-xl font-semibold">{title}</h2>{children}</section>
+  return <section className="card space-y-4 p-5"><h2 className="text-xl font-extrabold">{title}</h2>{children}</section>
 }
 
 // ---------------- Promotions ----------------
@@ -52,7 +52,7 @@ function PromotionEditor({ initial, onClose }: { initial: Promotion; onClose: ()
   const cats = catalog.categories
   return (
     <div className="card space-y-4 p-5">
-      <h2 className="text-xl font-semibold">{isNew ? 'New promotion' : `Edit ${initial.name}`}</h2>
+      <h2 className="text-xl font-extrabold">{isNew ? 'New promotion' : `Edit ${initial.name}`}</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         <Text label="Name" value={p.name} onChange={(name) => setP({ ...p, name })} />
         <label className="block text-sm font-semibold">Type
@@ -109,7 +109,7 @@ export function PromotionsAdmin() {
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <h1 className="text-3xl font-semibold">Promotions</h1>
+        <h1 className="text-3xl font-extrabold">Promotions</h1>
         <button type="button" className="btn-primary py-2 text-sm" onClick={() => setEditing({ id: `promo-${Date.now().toString(36)}`, name: '', description: '', type: 'percent', value: 10, active: true })}><Plus size={16} /> New promotion</button>
       </div>
       <p className="text-sm text-ink-soft">One promotion applies per order — whichever saves the customer most among automatic offers and the code they enter.</p>
@@ -170,7 +170,7 @@ export function SettingsAdmin() {
 
   return (
     <div className="space-y-5 pb-24">
-      <h1 className="text-3xl font-semibold">Settings</h1>
+      <h1 className="text-3xl font-extrabold">Settings</h1>
       <DemoModeNotice />
 
       <Section title="Publish changes to customers">

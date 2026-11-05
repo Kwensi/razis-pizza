@@ -26,7 +26,7 @@ export function OrderPlaced() {
   if (order === null) {
     return (
       <div className="container-page py-24 text-center">
-        <h1 className="text-3xl font-semibold">Order not found on this device</h1>
+        <h1 className="text-3xl font-extrabold">Order not found on this device</h1>
         <p className="mt-2 text-ink-soft">Order details are stored in the browser where the order was placed.</p>
         <Link to="/menu" className="btn-primary mt-6">Back to menu</Link>
       </div>
@@ -47,7 +47,7 @@ export function OrderPlaced() {
           <p className="inline-flex items-center gap-2 rounded-full bg-[#f4c46a] px-3 py-1 text-xs font-bold text-ink">
             <Hourglass size={14} /> {order.status === 'new' ? 'Sent · awaiting restaurant confirmation' : statusLabel(order.status)}
           </p>
-          <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">Thanks, {order.customer.name.split(' ')[0]}!</h1>
+          <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">Thanks, {order.customer.name.split(' ')[0]}!</h1>
           <p className="mt-2 text-white/80">Your order reference is</p>
           <p className="mt-1 font-mono text-2xl font-bold tracking-wider" data-testid="order-ref">{order.ref}</p>
         </div>
@@ -128,7 +128,7 @@ export function MyOrders() {
   }, [])
   return (
     <div className="container-page max-w-3xl py-10">
-      <h1 className="text-4xl font-semibold">My orders</h1>
+      <h1 className="text-4xl font-extrabold">My orders</h1>
       <p className="mt-2 text-ink-soft">Orders sent from this device. Order status updates come from the restaurant on WhatsApp.</p>
       {orders === null ? <p className="py-10 text-ink-soft">Loading…</p> : orders.length === 0 ? (
         <div className="py-16 text-center">

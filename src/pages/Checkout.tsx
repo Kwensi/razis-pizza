@@ -114,7 +114,7 @@ export default function Checkout() {
   return (
     <div className="container-page py-8">
       <Link to="/cart" className="text-sm font-bold text-brand">← Back to cart</Link>
-      <h1 className="mt-3 text-4xl font-semibold">Checkout</h1>
+      <h1 className="mt-3 text-4xl font-extrabold">Checkout</h1>
       <p className="mt-2 text-ink-soft">No account needed. Your order is sent to us on WhatsApp.</p>
 
       {!status.open && (
@@ -127,7 +127,7 @@ export default function Checkout() {
       <form ref={formRef} noValidate onSubmit={(e) => { e.preventDefault(); placeOrder() }} className="mt-6 grid gap-8 lg:grid-cols-[1fr_400px]">
         <div className="space-y-6">
           <section className="card space-y-5 p-6" aria-labelledby="h-you">
-            <h2 id="h-you" className="text-2xl font-semibold">Your details</h2>
+            <h2 id="h-you" className="text-2xl font-extrabold">Your details</h2>
             <Field id="name" label="Full name" error={errors.name}>
               <input {...input('name')} autoComplete="name" maxLength={LIMITS.name} />
             </Field>
@@ -137,7 +137,7 @@ export default function Checkout() {
           </section>
 
           <section className="card space-y-5 p-6" aria-labelledby="h-how">
-            <h2 id="h-how" className="text-2xl font-semibold">Pickup or delivery?</h2>
+            <h2 id="h-how" className="text-2xl font-extrabold">Pickup or delivery?</h2>
             <OrderTypeToggle />
             {draft.orderType === 'pickup' ? (
               <div className="rounded-2xl bg-cream p-4 text-sm">
@@ -162,7 +162,7 @@ export default function Checkout() {
           </section>
 
           <section className="card space-y-4 p-6" aria-labelledby="h-pay">
-            <h2 id="h-pay" className="text-2xl font-semibold">Payment</h2>
+            <h2 id="h-pay" className="text-2xl font-extrabold">Payment</h2>
             <div role="radiogroup" aria-labelledby="h-pay" aria-describedby={errors.paymentMethod ? 'paymentMethod-err' : undefined} className="grid gap-2.5">
               {methods.map((id) => (
                 <label key={id} className={`cursor-pointer rounded-2xl border-2 bg-white p-4 transition ${draft.paymentMethod === id ? 'border-brand' : 'border-ink/10 hover:border-ink/25'}`}>
@@ -185,7 +185,7 @@ export default function Checkout() {
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="card space-y-5 p-6">
-            <h2 className="text-2xl font-semibold">Review your order</h2>
+            <h2 className="text-2xl font-extrabold">Review your order</h2>
             <ul className="divide-y divide-ink/5">
               {totals.priced.map((p) => (
                 <li key={p.line.lineId} className="flex gap-3 py-3">
@@ -214,7 +214,7 @@ export default function Checkout() {
       {duplicate && (
         <div role="alertdialog" aria-modal="true" aria-labelledby="dup-title" className="fixed inset-0 z-50 grid place-items-end bg-ink/50 p-4 sm:place-items-center">
           <div className="card w-full max-w-md p-6">
-            <h2 id="dup-title" className="text-2xl font-semibold">Already sent?</h2>
+            <h2 id="dup-title" className="text-2xl font-extrabold">Already sent?</h2>
             <p className="mt-2 text-ink-soft">
               You placed this exact order {Math.max(1, Math.round((Date.now() - duplicate.at) / 60000))} min ago (ref <strong>{duplicate.ref}</strong>). Sending it again may create a duplicate order.
             </p>

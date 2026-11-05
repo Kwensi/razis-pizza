@@ -1,5 +1,7 @@
 # Razi's Pizza — pizza ordering PWA
 
+**Live site:** https://kwensi.github.io/razis-pizza/ (open on your phone, then Share → Add to Home Screen)
+
 A mobile-first pizza ordering web app that customers can install on iPhone, Android,
 Windows and Mac. Customers build their order (sizes, crusts, cheese, toppings, sides,
 drinks, desserts), choose pickup or delivery, and send the complete order to the

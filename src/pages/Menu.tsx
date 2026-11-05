@@ -40,7 +40,7 @@ export default function Menu() {
     <div className="container-page pb-10 pt-8">
       <header className="max-w-2xl">
         <p className="eyebrow">Order online</p>
-        <h1 className="mt-2 text-4xl font-semibold sm:text-5xl">Our menu</h1>
+        <h1 className="mt-2 text-4xl font-extrabold sm:text-5xl">Our menu</h1>
         <p className="mt-3 text-ink-soft">Tap any pizza to choose its size, crust, cheese and toppings. Prices update as you go.</p>
       </header>
 
@@ -71,7 +71,7 @@ export default function Menu() {
       {sections.map(({ category, products }, si) => (
         <section key={category.id} id={`cat-${category.id}`} className="scroll-mt-44 pt-10" aria-labelledby={`h-${category.id}`}>
           <div className="mb-5 flex items-baseline justify-between gap-4">
-            <h2 id={`h-${category.id}`} className="text-2xl font-semibold sm:text-3xl">{category.name}</h2>
+            <h2 id={`h-${category.id}`} className="text-2xl font-extrabold sm:text-3xl">{category.name}</h2>
             <p className="text-sm text-ink-soft">{category.description}</p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

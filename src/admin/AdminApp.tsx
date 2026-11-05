@@ -39,7 +39,7 @@ function PinGate({ onUnlock }: { onUnlock: () => void }) {
     <div className="grid min-h-dvh place-items-center bg-ink p-4">
       <form onSubmit={submit} className="card w-full max-w-sm p-7">
         <img src="logo.svg" alt="" className="h-12 w-12" />
-        <h1 className="mt-4 text-2xl font-semibold">Staff dashboard</h1>
+        <h1 className="mt-4 text-2xl font-extrabold">Staff dashboard</h1>
         <p className="mt-1 text-sm text-ink-soft">Enter the admin PIN. Default demo PIN: <strong>1234</strong> — change it in Settings.</p>
         <label htmlFor="pin" className="label mt-5">PIN</label>
         <input id="pin" type="password" inputMode="numeric" autoComplete="current-password" className="field text-center text-2xl tracking-[0.5em]"
@@ -91,7 +91,7 @@ function Dashboard() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <h1 className="text-3xl font-semibold">Dashboard</h1>
+        <h1 className="text-3xl font-extrabold">Dashboard</h1>
         <div className="flex gap-2">
           {hasSamples ? (
             <button type="button" className="btn-ghost py-2 text-sm" onClick={async () => {
@@ -117,7 +117,7 @@ function Dashboard() {
       </div>
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <section className="card p-6">
-          <h2 className="text-xl font-semibold">Sales, last 7 days</h2>
+          <h2 className="text-xl font-extrabold">Sales, last 7 days</h2>
           <div className="mt-6 flex h-48 items-end gap-2" role="img" aria-label="Bar chart of daily sales for the last 7 days">
             {stats.last7Days.map((d, i) => (
               <div key={i} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
@@ -129,7 +129,7 @@ function Dashboard() {
           </div>
         </section>
         <section className="card p-6">
-          <h2 className="text-xl font-semibold">Best sellers</h2>
+          <h2 className="text-xl font-extrabold">Best sellers</h2>
           {stats.bestSellers.length === 0 ? <p className="mt-4 text-sm text-ink-soft">No orders yet.</p> : (
             <ol className="mt-4 space-y-3">
               {stats.bestSellers.map((b, i) => (
@@ -145,7 +145,7 @@ function Dashboard() {
         </section>
       </div>
       <section className="card p-6">
-        <div className="flex items-center justify-between"><h2 className="text-xl font-semibold">Latest orders</h2><Link to="orders" className="text-sm font-bold text-brand">All orders →</Link></div>
+        <div className="flex items-center justify-between"><h2 className="text-xl font-extrabold">Latest orders</h2><Link to="orders" className="text-sm font-bold text-brand">All orders →</Link></div>
         <ul className="mt-3 divide-y divide-ink/5 text-sm">
           {orders.slice(0, 6).map((o) => (
             <li key={o.ref}><Link to={`orders/${o.ref}`} className="flex items-center justify-between gap-3 py-3 hover:text-brand">
