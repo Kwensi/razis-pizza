@@ -70,7 +70,7 @@ function SheetBody({ product, editing, onDone }: { product: Product; editing?: C
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto overscroll-contain px-5 pb-6 pt-5 sm:px-7">
+      <div className="relative flex-1 overflow-y-auto overscroll-contain px-5 pb-6 pt-5 sm:px-7">
         <h2 id="customize-title" className="text-3xl font-semibold">{product.name}</h2>
         <p className="mt-2 text-ink-soft">{product.description}</p>
         {!!product.tags?.length && <div className="mt-3 flex flex-wrap gap-1.5">{product.tags.map((t) => <Tag key={t} label={t} />)}</div>}
@@ -203,7 +203,7 @@ function PizzaOptions({ product, sel, onChange }: { product: PizzaProduct; sel: 
               const active = sel.cheese === lvl.id
               const amount = lvl.portions ? (cheese.prices[sel.sizeId] ?? 0) * lvl.portions : 0
               return (
-                <label key={lvl.id} className={`chip cursor-pointer ${active ? 'border-brand bg-brand text-white' : 'border-ink/15 bg-white hover:border-ink/40'}`}>
+                <label key={lvl.id} className={`chip relative cursor-pointer ${active ? 'border-brand bg-brand text-white' : 'border-ink/15 bg-white hover:border-ink/40'}`}>
                   <input type="radio" name="cheese" className="sr-only" checked={active} onChange={() => onChange({ ...sel, cheese: lvl.id })} />
                   {lvl.name}{amount > 0 && <span className={active ? 'text-white/85' : 'text-ink-soft'}> +{money(toMinor(amount))}</span>}
                 </label>
@@ -220,7 +220,7 @@ function PizzaOptions({ product, sel, onChange }: { product: PizzaProduct; sel: 
               const t = catalog.toppings.find((x) => x.id === id)
               const on = !sel.removedToppings.includes(id)
               return (
-                <label key={id} className={`chip inline-flex cursor-pointer items-center gap-1.5 ${on ? 'border-basil bg-[#e4eedc] text-basil' : 'border-ink/15 bg-white text-ink-soft line-through'}`}>
+                <label key={id} className={`chip relative inline-flex cursor-pointer items-center gap-1.5 ${on ? 'border-basil bg-[#e4eedc] text-basil' : 'border-ink/15 bg-white text-ink-soft line-through'}`}>
                   <input type="checkbox" className="sr-only" checked={on} onChange={() => onChange({
                     ...sel, removedToppings: on ? [...sel.removedToppings, id] : sel.removedToppings.filter((x) => x !== id),
                   })} />
@@ -239,7 +239,7 @@ function PizzaOptions({ product, sel, onChange }: { product: PizzaProduct; sel: 
             const ok = toppingAvailable(catalog, t.id, sel.sizeId)
             const disabled = !ok || (!on && count >= max)
             return (
-              <label key={t.id} className={`flex cursor-pointer items-center justify-between gap-2 rounded-2xl border-2 bg-white px-3 py-2.5 text-sm transition ${
+              <label key={t.id} className={`relative flex cursor-pointer items-center justify-between gap-2 rounded-2xl border-2 bg-white px-3 py-2.5 text-sm transition ${
                 on ? 'border-brand' : 'border-transparent hover:border-ink/15'} ${disabled ? 'cursor-not-allowed opacity-45' : ''}`}>
                 <input type="checkbox" className="sr-only" checked={on} disabled={disabled} onChange={() => onChange({
                   ...sel, addedToppings: on ? sel.addedToppings.filter((x) => x !== t.id) : [...sel.addedToppings, t.id],
