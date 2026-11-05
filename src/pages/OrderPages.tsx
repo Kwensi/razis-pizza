@@ -90,7 +90,7 @@ export function OrderPlaced() {
             <h2 className="font-sans text-base font-bold">{order.customer.orderType === 'delivery' ? 'Delivery to' : 'Pickup from'}</h2>
             <p className="mt-1 text-sm text-ink-soft">
               {order.customer.orderType === 'delivery'
-                ? `${order.customer.address}${order.customer.landmark ? ` (near ${order.customer.landmark})` : ''} · ${s.deliveryZones.find((z) => z.id === order.customer.zoneId)?.name ?? ''}`
+                ? `${order.customer.address}${order.customer.landmark ? ` · Landmark: ${order.customer.landmark}` : ''} · ${s.deliveryZones.find((z) => z.id === order.customer.zoneId)?.name ?? ''}`
                 : `${s.address}, ${s.city} · ready about ${s.pickupPrepMinutes} min after confirmation`}
             </p>
           </section>

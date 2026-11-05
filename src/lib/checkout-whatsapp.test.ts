@@ -66,7 +66,7 @@ describe('checkout validation', () => {
 })
 
 describe('WhatsApp message generation', () => {
-  const ref = 'FP-261105-ABCDE'
+  const ref = 'RP-261105-ABCDE'
   const { order, errors } = buildOrder(cat, lines, customer(), ref, NOW)
   const message = buildOrderMessage(order, cat)
 
@@ -81,7 +81,7 @@ describe('WhatsApp message generation', () => {
 
   it('includes every required detail', () => {
     for (const s of [
-      'NEW ORDER — Fornello Pizza Co.', `Ref: *${ref}*`, 'Name: Ama Mensah', 'Phone: +233241234567',
+      "NEW ORDER — Razi's Pizza", `Ref: *${ref}*`, 'Name: Ama Mensah', 'Phone: +233241234567',
       'Order type: DELIVERY', 'Area: Osu', 'Address: House 12, Mango Tree Lane', 'Landmark: Opposite the blue church',
       '1. 2 × Pepperoni — GH₵334', '• Large (14″)', '• Thin crust', '• Add Mushrooms, Olives', '• Extra cheese', '• Note: Well done please',
       '2. 1 × Cheesy Garlic Bread — GH₵35', '• 6 pieces', 'Subtotal: GH₵369', 'Delivery: GH₵15', '*TOTAL: GH₵384*',
@@ -109,9 +109,9 @@ describe('WhatsApp message generation', () => {
   it('generates readable unique-looking references', () => {
     let i = 0
     const seq = [0.1, 0.5, 0.9, 0.3, 0.7]
-    const r = generateOrderRef(new Date(2026, 10, 5), 'FP', () => seq[i++ % seq.length])
-    expect(r).toMatch(/^FP-261105-[2-9A-HJKMNP-Z]{5}$/)
-    expect(generateOrderRef(NOW, 'FP')).not.toBe(generateOrderRef(NOW, 'FP'))
+    const r = generateOrderRef(new Date(2026, 10, 5), 'RP', () => seq[i++ % seq.length])
+    expect(r).toMatch(/^RP-261105-[2-9A-HJKMNP-Z]{5}$/)
+    expect(generateOrderRef(NOW, 'RP')).not.toBe(generateOrderRef(NOW, 'RP'))
   })
 
   it('round-trips the staff import payload without prices', () => {
@@ -147,15 +147,15 @@ describe('duplicate submissions', () => {
   it('detects re-sending the same order within the window', () => {
     const g = createSubmitGuard(memory(), 60_000)
     g.begin('fp', 0)
-    g.complete('fp', 'FP-1', 0)
-    expect(g.begin('fp', 30_000)).toEqual({ status: 'duplicate', ref: 'FP-1', at: 0 })
+    g.complete('fp', 'RP-1', 0)
+    expect(g.begin('fp', 30_000)).toEqual({ status: 'duplicate', ref: 'RP-1', at: 0 })
     expect(g.begin('other', 30_000).status).toBe('ok')
   })
 
   it('allows the same order again after the window or after a failure', () => {
     const g = createSubmitGuard(memory(), 60_000)
     g.begin('fp', 0)
-    g.complete('fp', 'FP-1', 0)
+    g.complete('fp', 'RP-1', 0)
     expect(g.begin('fp', 61_000).status).toBe('ok')
     g.fail()
     expect(g.begin('fp2', 61_001).status).toBe('ok')
@@ -171,10 +171,10 @@ describe('duplicate submissions', () => {
 
 describe('order storage and stats', () => {
   it('saves, lists and updates orders in IndexedDB', async () => {
-    const { order } = buildOrder(cat, lines, customer(), 'FP-261105-ZZZZZ', NOW)
+    const { order } = buildOrder(cat, lines, customer(), 'RP-261105-ZZZZZ', NOW)
     await saveOrder(order)
-    expect((await getOrder('FP-261105-ZZZZZ'))?.totals.total).toBe(order.totals.total)
-    const updated = await setOrderStatus('FP-261105-ZZZZZ', 'preparing')
+    expect((await getOrder('RP-261105-ZZZZZ'))?.totals.total).toBe(order.totals.total)
+    const updated = await setOrderStatus('RP-261105-ZZZZZ', 'preparing')
     expect(updated?.status).toBe('preparing')
     expect(updated?.statusHistory.map((h) => h.status)).toEqual(['new', 'preparing'])
     expect((await listOrders()).length).toBeGreaterThan(0)

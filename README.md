@@ -1,4 +1,4 @@
-# Fornello Pizza Co. — pizza ordering PWA
+# Razi's Pizza — pizza ordering PWA
 
 A mobile-first pizza ordering web app that customers can install on iPhone, Android,
 Windows and Mac. Customers build their order (sizes, crusts, cheese, toppings, sides,
@@ -31,7 +31,7 @@ Staff dashboard: open `/#/admin` (or "Staff login" in the footer). Default PIN *
 1. Customer browses the menu → taps a pizza → picks size, crust, cheese, toppings and quantity. The price updates instantly.
 2. Cart: edit, change quantity, remove, pick pickup/delivery and area, enter a promo code.
 3. Checkout: name, phone, address/landmark (delivery), instructions and payment method. Everything is validated.
-4. **Place order** generates a reference (e.g. `FP-261105-7KQ2M`) and opens WhatsApp with a formatted order message to your number. The customer presses Send.
+4. **Place order** generates a reference (e.g. `RP-261105-7KQ2M`) and opens WhatsApp with a formatted order message to your number. The customer presses Send.
 5. The order page says **"awaiting restaurant confirmation"**. The app never claims an order is confirmed or paid. You confirm by replying on WhatsApp.
 6. The message ends with a **staff link**. Tap it on the dashboard device to add the order to your dashboard. Prices are recalculated from *your* menu, so an edited message can't change the total.
 

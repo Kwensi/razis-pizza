@@ -16,7 +16,7 @@
 import type { RestaurantSettings } from '../lib/types.ts'
 
 export const restaurant: RestaurantSettings = {
-  name: 'Fornello Pizza Co.', // [INSERT RESTAURANT NAME]
+  name: "Razi's Pizza",
   tagline: 'Wood-fired. Hand-stretched. Delivered hot.', // [INSERT TAGLINE]
   description:
     'Hand-stretched pizzas baked in a stone oven, made with slow-proved dough, real mozzarella and fresh local produce. Order for pickup or delivery in minutes.',
