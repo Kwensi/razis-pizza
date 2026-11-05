@@ -130,7 +130,7 @@ describe('cart calculations', () => {
 
   it('totals subtotal, delivery and total', () => {
     const lines = [pizza('pepperoni', { sizeId: 'L', crustId: 'thin', addedToppings: ['mushrooms', 'olives'], cheese: 'extra' }, 2)]
-    const t = computeTotals(cat, lines, { orderType: 'delivery', zoneId: 'osu', promoCode: '', now: NOW })
+    const t = computeTotals(cat, lines, { orderType: 'delivery', zoneId: 'kpone', promoCode: '', now: NOW })
     expect(t.subtotal).toBe(33400)
     expect(t.discount).toBe(0)
     expect(t.delivery.fee).toBe(1500)
@@ -230,21 +230,21 @@ describe('discount calculations', () => {
 
 describe('delivery fees', () => {
   it('charges the zone fee and nothing for pickup', () => {
-    expect(deliveryFee(cat, 'delivery', 'labone', 10000).fee).toBe(2000)
-    expect(deliveryFee(cat, 'pickup', 'labone', 10000).fee).toBe(0)
+    expect(deliveryFee(cat, 'delivery', 'community-25', 10000).fee).toBe(2000)
+    expect(deliveryFee(cat, 'pickup', 'community-25', 10000).fee).toBe(0)
   })
   it('requires a valid, active zone', () => {
     expect(deliveryFee(cat, 'delivery', '', 10000).error).toBe('Choose your delivery area.')
-    expect(deliveryFee(cat, 'delivery', 'tema', 50000).error).toMatch(/not delivering to Tema/)
+    expect(deliveryFee(cat, 'delivery', 'prampram', 50000).error).toMatch(/not delivering to Prampram/)
   })
   it('enforces zone minimum orders', () => {
-    expect(deliveryFee(cat, 'delivery', 'east-legon', 8500).error).toMatch(/Minimum order for delivery to East Legon/)
-    expect(deliveryFee(cat, 'delivery', 'east-legon', 10000).fee).toBe(3500)
+    expect(deliveryFee(cat, 'delivery', 'afienya', 8500).error).toMatch(/Minimum order for delivery to Afienya/)
+    expect(deliveryFee(cat, 'delivery', 'afienya', 10000).fee).toBe(3500)
   })
   it('gives free delivery over the threshold (after discounts)', () => {
-    const q = deliveryFee(cat, 'delivery', 'osu', 40000)
+    const q = deliveryFee(cat, 'delivery', 'kpone', 40000)
     expect(q.fee).toBe(0)
     expect(q.freeApplied).toBe(true)
-    expect(deliveryFee(cat, 'delivery', 'osu', 39999).fee).toBe(1500)
+    expect(deliveryFee(cat, 'delivery', 'kpone', 39999).fee).toBe(1500)
   })
 })

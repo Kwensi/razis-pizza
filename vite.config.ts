@@ -17,10 +17,10 @@ function seo(): Plugin {
     '@type': 'Restaurant',
     name: r.name,
     description: r.description,
-    servesCuisine: ['Pizza', 'Italian'],
+    servesCuisine: ['Pizza', 'Shawarma', 'Grilled chicken'],
     priceRange: '$$',
     url: site,
-    image: `${site}images/hero-1600.webp`,
+    image: `${site}images/razis-supreme-800.webp`,
     telephone: r.phone,
     address: { '@type': 'PostalAddress', streetAddress: r.address, addressLocality: r.city, addressCountry: r.country },
     ...(r.latitude && r.longitude ? { geo: { '@type': 'GeoCoordinates', latitude: r.latitude, longitude: r.longitude } } : {}),
@@ -42,7 +42,7 @@ function seo(): Plugin {
     <meta property="og:title" content="${esc(title)}" />
     <meta property="og:description" content="${esc(r.description)}" />
     <meta property="og:url" content="${esc(site)}" />
-    <meta property="og:image" content="${esc(site)}images/hero-1600.webp" />
+    <meta property="og:image" content="${esc(site)}images/razis-supreme-800.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>`
       return html.replace('<!--SEO-->', tags)
@@ -67,13 +67,13 @@ export default defineConfig({
     seo(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo.svg', 'favicon.ico', 'apple-touch-icon-180x180.png'],
+      includeAssets: ['razis-logo.webp', 'favicon.ico', 'apple-touch-icon-180x180.png'],
       manifest: {
         name: r.name,
         short_name: r.name.split(' ')[0],
         description: r.description,
-        theme_color: '#b3261e',
-        background_color: '#fbf6ec',
+        theme_color: '#10181b',
+        background_color: '#10181b',
         display: 'standalone',
         orientation: 'portrait',
         start_url: './',
@@ -88,7 +88,8 @@ export default defineConfig({
       },
       workbox: {
         // App shell + small product photos are precached so the menu works offline.
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}', 'images/*-400.webp', 'images/hero-960.webp'],
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,webp}'],
+        globIgnores: ['app-icon.png', 'images/*-800.webp'],
         navigateFallback: 'index.html',
         runtimeCaching: [
           {

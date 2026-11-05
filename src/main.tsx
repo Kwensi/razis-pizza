@@ -1,4 +1,4 @@
-import '@fontsource-variable/fraunces'
+import '@fontsource/anton'
 import '@fontsource-variable/manrope'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

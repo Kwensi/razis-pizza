@@ -75,7 +75,7 @@ export function ProductCard({ product, onSelect, priority = false }: { product: 
         <ProductImage image={product.image} alt={product.name} eager={priority}
           className="aspect-[4/3] w-full transition duration-500 group-hover:scale-[1.03]" />
         {product.bestSeller && (
-          <span className="absolute left-3 top-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-bold text-white backdrop-blur">Best seller</span>
+          <span className="absolute left-3 top-3 brush bg-gold px-3 py-1 text-xs font-extrabold uppercase text-ink">Best seller</span>
         )}
       </button>
       <div className="flex flex-1 flex-col gap-3 p-5">

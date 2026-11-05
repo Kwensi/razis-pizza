@@ -44,7 +44,7 @@ export function OrderPlaced() {
     <div className="container-page max-w-3xl py-10">
       <div className="card overflow-hidden">
         <div className="bg-ink p-7 text-white sm:p-9">
-          <p className="inline-flex items-center gap-2 rounded-full bg-[#f4c46a] px-3 py-1 text-xs font-bold text-ink">
+          <p className="inline-flex items-center gap-2 rounded-full bg-gold px-3 py-1 text-xs font-bold text-ink">
             <Hourglass size={14} /> {order.status === 'new' ? 'Sent · awaiting restaurant confirmation' : statusLabel(order.status)}
           </p>
           <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">Thanks, {order.customer.name.split(' ')[0]}!</h1>

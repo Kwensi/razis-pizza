@@ -38,7 +38,7 @@ function PinGate({ onUnlock }: { onUnlock: () => void }) {
   return (
     <div className="grid min-h-dvh place-items-center bg-ink p-4">
       <form onSubmit={submit} className="card w-full max-w-sm p-7">
-        <img src="logo.svg" alt="" className="h-12 w-12" />
+        <img src="razis-logo.webp" alt="" className="h-16 w-auto" />
         <h1 className="mt-4 text-2xl font-extrabold">Staff dashboard</h1>
         <p className="mt-1 text-sm text-ink-soft">Enter the admin PIN. Default demo PIN: <strong>1234</strong> — change it in Settings.</p>
         <label htmlFor="pin" className="label mt-5">PIN</label>

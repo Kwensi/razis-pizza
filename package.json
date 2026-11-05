@@ -10,11 +10,11 @@
     "preview": "vite preview",
     "test": "vitest run",
     "typecheck": "tsc -b",
-    "icons": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
+    "icons": "pwa-assets-generator --preset minimal-2023 public/app-icon.png"
   },
   "dependencies": {
-    "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/anton": "^5.3.0",
     "idb-keyval": "^6.3.0",
     "lucide-react": "^1.69.0",
     "react": "^19.3.1",

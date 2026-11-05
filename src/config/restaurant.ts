@@ -17,15 +17,19 @@ import type { RestaurantSettings } from '../lib/types.ts'
 
 export const restaurant: RestaurantSettings = {
   name: "Razi's Pizza",
-  tagline: 'Wood-fired. Hand-stretched. Delivered hot.', // [INSERT TAGLINE]
+  tagline: 'Your Crave, Our Creation.',
   description:
-    'Hand-stretched pizzas baked in a stone oven, made with slow-proved dough, real mozzarella and fresh local produce. Order for pickup or delivery in minutes.',
-  address: '14 Oxford Street, Osu', // [INSERT LOCATION]
-  city: 'Accra',
+    'Pizza, shawarma and grilled chicken made with fresh ingredients, rich cheese and our signature sauce. Every bite is a burst of flavour. Order for pickup or delivery in minutes.',
+  brand: {
+    heroKicker: 'Fresh & Tasty',
+    heroTitle: 'Pizza',
+    heroStrap: 'Handcrafted. Loaded. Perfect.',
+    servesLine: ['Pizza', 'Shawarma', 'Great taste'],
+  },
+  address: 'Kpone Hospital Junction',
+  city: 'Kpone',
   country: 'Ghana',
   mapUrl: '',
-  latitude: 5.556,
-  longitude: -0.1826,
   // Digits only, including country code, no "+" or spaces.
   whatsappNumber: '233200000000', // [INSERT NUMBER WITH COUNTRY CODE]
   phone: '+233 20 000 0000', // [INSERT PHONE NUMBER]
@@ -57,12 +61,13 @@ export const restaurant: RestaurantSettings = {
   maxToppings: 8,
   maxQuantityPerLine: 20,
   deliveryZones: [
-    { id: 'osu', name: 'Osu', fee: 15, etaMinutes: 30, active: true },
-    { id: 'labone', name: 'Labone', fee: 20, etaMinutes: 35, active: true },
-    { id: 'cantonments', name: 'Cantonments', fee: 20, etaMinutes: 35, active: true },
-    { id: 'airport', name: 'Airport Residential', fee: 25, etaMinutes: 40, active: true },
-    { id: 'east-legon', name: 'East Legon', fee: 35, minOrder: 100, etaMinutes: 50, active: true },
-    { id: 'tema', name: 'Tema', fee: 60, minOrder: 200, etaMinutes: 75, active: false },
+    { id: 'kpone', name: 'Kpone Township', fee: 15, etaMinutes: 25, active: true },
+    { id: 'community-25', name: 'Tema Community 25', fee: 20, etaMinutes: 30, active: true },
+    { id: 'michel-camp', name: 'Michel Camp', fee: 20, etaMinutes: 30, active: true },
+    { id: 'ashaiman', name: 'Ashaiman', fee: 25, etaMinutes: 40, active: true },
+    { id: 'tema', name: 'Tema (Communities 1–12)', fee: 35, minOrder: 100, etaMinutes: 50, active: true },
+    { id: 'afienya', name: 'Afienya', fee: 35, minOrder: 100, etaMinutes: 45, active: true },
+    { id: 'prampram', name: 'Prampram', fee: 50, minOrder: 200, etaMinutes: 60, active: false },
   ],
   payments: {
     cash_pickup: { enabled: true, label: 'Cash on pickup' },
@@ -88,9 +93,9 @@ export const restaurant: RestaurantSettings = {
     },
   },
   testimonials: [
-    { name: 'Ama K.', location: 'Labone', rating: 5, quote: 'The crust is unreal — blistered, chewy, and it still arrived hot. Our Friday night order is now a tradition.' },
-    { name: 'Daniel O.', location: 'Osu', rating: 5, quote: 'Ordering on WhatsApp took less than a minute. The Suya Chicken pizza is the best thing in Accra right now.' },
-    { name: 'Efua M.', location: 'Cantonments', rating: 5, quote: 'Proper Neapolitan-style margherita and they actually let you customise everything. Delivery was right on time.' },
+    { name: 'Ama K.', location: 'Community 25', rating: 5, quote: 'The crust is unreal — blistered, chewy, and it still arrived hot. Our Friday night order is now a tradition.' },
+    { name: 'Daniel O.', location: 'Kpone', rating: 5, quote: 'Ordering on WhatsApp took less than a minute. The Suya Chicken pizza is the best thing in Kpone right now.' },
+    { name: 'Efua M.', location: 'Tema', rating: 5, quote: 'Proper Neapolitan-style margherita and they actually let you customise everything. Delivery was right on time.' },
   ],
   // SHA-256 of "1234". Change the PIN from Admin → Settings (demo mode only — see docs/PRODUCTION.md).
   adminPinHash: '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',

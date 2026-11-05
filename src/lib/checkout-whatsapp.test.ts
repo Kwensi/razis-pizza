@@ -9,7 +9,7 @@ import {
 import type { CartLine, CustomerDetails } from './types'
 
 const customer = (over: Partial<CustomerDetails> = {}): CustomerDetails => ({
-  name: 'Ama Mensah', phone: '024 123 4567', orderType: 'delivery', zoneId: 'osu', address: 'House 12, Mango Tree Lane',
+  name: 'Ama Mensah', phone: '024 123 4567', orderType: 'delivery', zoneId: 'kpone', address: 'House 12, Mango Tree Lane',
   landmark: 'Opposite the blue church', instructions: 'Gate #4 & blue door', paymentMethod: 'momo', promoCode: '', ...over,
 })
 const lines: CartLine[] = [
@@ -55,7 +55,7 @@ describe('checkout validation', () => {
     expect(validateCheckout(cat, customer({ paymentMethod: 'bank' })).paymentMethod).toBeDefined() // bank disabled in demo
   })
   it('rejects inactive zones, odd names and long text', () => {
-    expect(validateCheckout(cat, customer({ zoneId: 'tema' })).zoneId).toMatch(/Tema/)
+    expect(validateCheckout(cat, customer({ zoneId: 'prampram' })).zoneId).toMatch(/Prampram/)
     expect(validateCheckout(cat, customer({ name: '<script>alert(1)</script>' })).name).toBeDefined()
     expect(validateCheckout(cat, customer({ instructions: 'x'.repeat(301) })).instructions).toBeDefined()
   })
@@ -82,7 +82,7 @@ describe('WhatsApp message generation', () => {
   it('includes every required detail', () => {
     for (const s of [
       "NEW ORDER — Razi's Pizza", `Ref: *${ref}*`, 'Name: Ama Mensah', 'Phone: +233241234567',
-      'Order type: DELIVERY', 'Area: Osu', 'Address: House 12, Mango Tree Lane', 'Landmark: Opposite the blue church',
+      'Order type: DELIVERY', 'Area: Kpone Township', 'Address: House 12, Mango Tree Lane', 'Landmark: Opposite the blue church',
       '1. 2 × Pepperoni — GH₵334', '• Large (14″)', '• Thin crust', '• Add Mushrooms, Olives', '• Extra cheese', '• Note: Well done please',
       '2. 1 × Cheesy Garlic Bread — GH₵35', '• 6 pieces', 'Subtotal: GH₵369', 'Delivery: GH₵15', '*TOTAL: GH₵384*',
       'Payment:* Mobile Money (not yet paid — awaiting confirmation)', 'Instructions:* Gate #4 & blue door', 'Please confirm',
@@ -93,7 +93,7 @@ describe('WhatsApp message generation', () => {
     const p = buildOrder(cat, lines, customer({ orderType: 'pickup', paymentMethod: 'cash_pickup' }), ref, NOW).order
     const msg = buildOrderMessage(p, cat)
     expect(msg).toContain('Order type: PICKUP')
-    expect(msg).toContain('Collect from: 14 Oxford Street, Osu, Accra')
+    expect(msg).toContain('Collect from: Kpone Hospital Junction, Kpone')
     expect(msg).not.toContain('Delivery:')
   })
 
@@ -165,7 +165,7 @@ describe('duplicate submissions', () => {
     const a = orderFingerprint(lines, customer())
     const b = orderFingerprint([...lines].reverse(), customer({ phone: '0241234567' }))
     expect(a).toBe(b)
-    expect(orderFingerprint(lines, customer({ zoneId: 'labone' }))).not.toBe(a)
+    expect(orderFingerprint(lines, customer({ zoneId: 'community-25' }))).not.toBe(a)
   })
 })
 

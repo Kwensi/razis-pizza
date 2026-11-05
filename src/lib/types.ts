@@ -198,6 +198,14 @@ export interface RestaurantSettings {
   testimonials: Testimonial[]
   /** SHA-256 hex of the demo admin PIN. Default PIN is 1234 — change it in Admin → Settings. */
   adminPinHash: string
+  /** Marketing copy used on the homepage, matching the printed flyers */
+  brand: {
+    heroKicker: string
+    heroTitle: string
+    heroStrap: string
+    /** short list shown as "PIZZA • SHAWARMA • GREAT TASTE" */
+    servesLine: string[]
+  }
 }
 
 export interface Catalog {

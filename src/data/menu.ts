@@ -57,9 +57,11 @@ export const categories: Category[] = [
   { id: 'chicken', name: 'Chicken Pizzas', description: 'Grilled, spiced and saucy', kind: 'pizza', enabled: true, sortOrder: 4 },
   { id: 'vegetarian', name: 'Vegetarian Pizzas', description: 'Garden-fresh and meat-free', kind: 'pizza', enabled: true, sortOrder: 5 },
   { id: 'premium', name: 'Premium Pizzas', description: 'Imported cheeses and cured meats', kind: 'pizza', enabled: true, sortOrder: 6 },
-  { id: 'sides', name: 'Sides', description: 'Made for sharing', kind: 'simple', enabled: true, sortOrder: 7 },
-  { id: 'drinks', name: 'Drinks', description: 'Chilled and freshly made', kind: 'simple', enabled: true, sortOrder: 8 },
-  { id: 'desserts', name: 'Desserts', description: 'Save room for these', kind: 'simple', enabled: true, sortOrder: 9 },
+  { id: 'shawarma', name: 'Shawarma', description: 'Bold flavour. Perfect wrap.', kind: 'simple', enabled: true, sortOrder: 7 },
+  { id: 'grills', name: 'Chicken & Grills', description: 'Grilled to perfection', kind: 'simple', enabled: true, sortOrder: 8 },
+  { id: 'sides', name: 'Sides', description: 'Made for sharing', kind: 'simple', enabled: true, sortOrder: 9 },
+  { id: 'drinks', name: 'Drinks', description: 'Chilled and freshly made', kind: 'simple', enabled: true, sortOrder: 10 },
+  { id: 'desserts', name: 'Desserts', description: 'Save room for these', kind: 'simple', enabled: true, sortOrder: 11 },
 ]
 
 const P = bySize
@@ -70,6 +72,7 @@ export const products: Product[] = [
   { kind: 'pizza', id: 'pepperoni', categoryId: 'classic', name: 'Pepperoni', description: 'A generous layer of cup-and-char pepperoni over tomato sauce and mozzarella.', image: 'images/pepperoni', prices: P(75, 105, 135, 170), defaultToppings: ['pepperoni'], enabled: true, bestSeller: true },
   { kind: 'pizza', id: 'tomato-basil', categoryId: 'classic', name: 'Tomato & Basil', description: 'Roasted cherry tomatoes, garlic, basil and a little parmesan on a thin, crisp base.', image: 'images/tomato-basil', prices: P(60, 85, 110, 140), defaultToppings: ['tomatoes'], enabled: true, tags: ['Vegetarian'] },
   // Signature
+  { kind: 'pizza', id: 'razis-supreme', categoryId: 'signature', name: 'Razi’s Supreme', description: 'Our house pizza: pepperoni, mushrooms, green peppers, red onion and black olives on our signature sauce, under a blanket of stretchy mozzarella.', image: 'images/razis-supreme', prices: P(85, 120, 155, 190), defaultToppings: ['pepperoni', 'mushrooms', 'green-peppers', 'onions', 'olives'], enabled: true, bestSeller: true, tags: ['House special'] },
   { kind: 'pizza', id: 'suya-chicken', categoryId: 'signature', name: 'Suya Chicken', description: 'Suya-spiced grilled chicken, red onion, green pepper and a ginger-pepper drizzle.', image: 'images/suya-chicken', prices: P(85, 115, 150, 185), defaultToppings: ['chicken', 'onions', 'green-peppers'], enabled: true, bestSeller: true, tags: ['Spicy', 'Chef’s pick'] },
   { kind: 'pizza', id: 'capricciosa', categoryId: 'signature', name: 'Capricciosa', description: 'Seasoned beef, mushrooms, black olives and roasted tomatoes with basil.', image: 'images/capricciosa', prices: P(80, 110, 145, 180), defaultToppings: ['beef', 'mushrooms', 'olives', 'tomatoes'], enabled: true },
   { kind: 'pizza', id: 'diavola', categoryId: 'signature', name: 'Diavola', description: 'Spicy pepperoni, jalapeños, chilli oil and mozzarella. Not for the faint-hearted.', image: 'images/diavola', prices: P(80, 110, 145, 180), defaultToppings: ['pepperoni', 'jalapenos'], enabled: true, tags: ['Spicy'] },
@@ -89,7 +92,12 @@ export const products: Product[] = [
   { kind: 'pizza', id: 'truffle-mushroom', categoryId: 'premium', name: 'Truffle Mushroom', description: 'Wild mushrooms, truffle cream, mozzarella, spinach and burrata to finish.', image: 'images/truffle-mushroom', prices: P(110, 150, 190, 235), defaultToppings: ['mushrooms'], enabled: true, tags: ['Vegetarian'] },
   // Sides
   { kind: 'simple', id: 'garlic-bread', categoryId: 'sides', name: 'Cheesy Garlic Bread', description: 'Stone-baked dough with garlic butter, herbs and melted mozzarella.', image: 'images/garlic-bread', variants: [{ id: 'reg', name: '6 pieces', price: 35 }, { id: 'lg', name: '10 pieces', price: 50 }], enabled: true, bestSeller: true },
-  { kind: 'simple', id: 'wings', categoryId: 'sides', name: 'Chicken Wings', description: 'Crispy wings tossed in house hot sauce, served with a dip.', image: 'images/wings', variants: [{ id: '6', name: '6 wings', price: 55 }, { id: '12', name: '12 wings', price: 95 }], enabled: true },
+  // Shawarma
+  { kind: 'simple', id: 'chicken-shawarma', categoryId: 'shawarma', name: 'Chicken Shawarma', description: 'Juicy marinated chicken, seasoned to perfection with fresh veggies and creamy garlic sauce.', image: 'images/shawarma', variants: [{ id: 'reg', name: 'Regular', price: 45 }, { id: 'lg', name: 'Large', price: 60 }], enabled: true, bestSeller: true },
+  { kind: 'simple', id: 'beef-shawarma', categoryId: 'shawarma', name: 'Beef Shawarma', description: 'Tender spiced beef, grilled to perfection with fresh veggies and creamy garlic sauce.', image: 'images/shawarma', variants: [{ id: 'reg', name: 'Regular', price: 50 }, { id: 'lg', name: 'Large', price: 65 }], enabled: true },
+  // Chicken & grills
+  { kind: 'simple', id: 'wings', categoryId: 'grills', name: 'Peri-Peri Chicken Wings', description: 'Spicy peri-peri wings, grilled to perfection and served with our fresh green pepper & ginger sauce.', image: 'images/peri-wings', variants: [{ id: '6', name: '6 wings', price: 55 }, { id: '12', name: '12 wings', price: 95 }], enabled: true, bestSeller: true, tags: ['Spicy'] },
+  { kind: 'simple', id: 'grilled-chicken-fries', categoryId: 'grills', name: 'Grilled Chicken & Fries', description: 'Tender, juicy chicken grilled with our special seasoning, served with crispy golden fries. Crispy fries. Juicy chicken. Perfect combo.', image: 'images/grilled-chicken-fries', variants: [{ id: 'quarter', name: 'Quarter chicken', price: 65 }, { id: 'half', name: 'Half chicken', price: 95 }], enabled: true },
   { kind: 'simple', id: 'chicken-tenders', categoryId: 'sides', name: 'Chicken Tenders', description: 'Buttermilk-fried tenders with garlic aioli.', image: 'images/chicken-tenders', variants: [{ id: '5', name: '5 pieces', price: 50 }], enabled: true },
   { kind: 'simple', id: 'suya-skewers', categoryId: 'sides', name: 'Suya Skewers', description: 'Flame-grilled suya skewers with onion and pepper.', image: 'images/suya-skewers', variants: [{ id: '3', name: '3 skewers', price: 45 }], enabled: true, tags: ['Spicy'] },
   { kind: 'simple', id: 'fries', categoryId: 'sides', name: 'Skin-on Fries', description: 'Crispy, salted, and dangerously addictive.', image: 'images/fries', variants: [{ id: 'reg', name: 'Regular', price: 25 }, { id: 'lg', name: 'Large', price: 35 }], enabled: true },

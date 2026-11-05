@@ -2,16 +2,19 @@
 
 /* Brand tokens — change colours here to rebrand. */
 @theme {
-  --color-brand: #b3261e; /* premium pizza red (white text contrast 6.4:1) */
-  --color-brand-dark: #8c1d17;
-  --color-brand-soft: #f7e1dc;
-  --color-ink: #1f1d1b; /* charcoal */
-  --color-ink-soft: #57524c;
-  --color-cream: #fbf6ec; /* warm cream background */
-  --color-cream-deep: #f3eadb;
-  --color-gold: #d98b2b;
-  --color-basil: #3f6b2a;
-  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  /* Taken from the Razi's Pizza flyers */
+  --color-brand: #c8141c; /* flyer red (white text contrast 5.7:1) */
+  --color-brand-dark: #9a0f15;
+  --color-brand-soft: #fbe3e1;
+  --color-gold: #f5b51e; /* flyer yellow, use with dark text */
+  --color-night: #10181b; /* flyer charcoal background */
+  --color-night-soft: #1c272b;
+  --color-ink: #161c1f;
+  --color-ink-soft: #545a5c;
+  --color-cream: #faf6ef; /* light background for menu/cart/checkout readability */
+  --color-cream-deep: #f1ebe1;
+  --color-basil: #2f7d32;
+  --font-display: 'Anton', Impact, 'Arial Narrow Bold', sans-serif;
   --font-sans: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
@@ -25,9 +28,11 @@
   }
   h1, h2, h3 {
     @apply font-display;
-    font-optical-sizing: auto;
-    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
   }
+  /* Anton ships one weight; never fake-bold it */
+  h1, h2, h3, .font-display { font-synthesis: none; font-weight: 400 !important; }
   :focus-visible {
     outline: 3px solid var(--color-gold);
     outline-offset: 2px;
@@ -64,4 +69,21 @@
 @media print {
   .no-print { display: none !important; }
   body { background: white; }
+}
+
+/* ---------- Flyer-style brand surfaces ---------- */
+/* Charcoal with a subtle grain, like the printed flyers */
+@utility bg-grunge {
+  background-color: var(--color-night);
+  background-image:
+    radial-gradient(ellipse at 80% 20%, rgba(200, 20, 28, 0.18), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Torn-edge brush stroke bars */
+@utility brush {
+  clip-path: polygon(1% 12%, 6% 4%, 14% 9%, 24% 2%, 37% 7%, 49% 1%, 62% 6%, 74% 2%, 86% 8%, 95% 3%, 100% 14%, 98% 52%, 100% 88%, 92% 97%, 80% 92%, 67% 99%, 53% 94%, 40% 100%, 27% 94%, 15% 99%, 5% 93%, 0% 82%, 2% 48%);
+}
+/* Ribbon banner with notched ends */
+@utility ribbon {
+  clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
 }
